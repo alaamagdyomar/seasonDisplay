@@ -13,12 +13,20 @@ import ReactDOM from "react-dom";
 // refacture to class based component 
 
 class App extends React.Component {
-  render() {
+  constructor(props){
+    super(props);
+    this.state ={ lat:null };
+
+    // to avoid rendering the component every time w get that state
     window.navigator.geolocation.getCurrentPosition(
-      (position)=>console.log(position),
+      (position)=>{
+        this.setState({ lat:position.coords.latitude });
+      },
       (err)=>console.log(err));
 
-    return <div> latitude: </div>;
+  }
+  render() {
+    return <div> latitude: {this.state.lat} </div>;
   }
 };
 
