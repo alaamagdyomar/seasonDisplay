@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SeasonDisplay from "./seasonDisplay"
+import SeasonDisplay from "./SeasonDisplay"
 
 //  // function component 
 // const App = () => {
