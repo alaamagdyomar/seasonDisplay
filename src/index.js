@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SeasonDisplay from "./SeasonDisplay"
+import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner"
 
 //  // function component 
 // const App = () => {
@@ -24,19 +25,27 @@ class App extends React.Component {
   }
 
 
-  render() {
+  // Helper Function to avoid multi return in the render function 
+     renderContent() {
+  if(this.state.errorMessage && !this.state.lat){
+    return <div>Error:{this.state.errorMessage}</div>
+  }
 
-      if(this.state.errorMessage && !this.state.lat){
-          return <div>Error:{this.state.errorMessage}</div>
-        }
-     
-        if(this.state.lat && !this.state.errorMessage){
-          // return <div>latitude:{this.state.lat}</div>
-          return <SeasonDisplay lat={this.state.lat} />
-        }
-     
-        return <div> Loading.......!</div>
-    
+  if(this.state.lat && !this.state.errorMessage){
+    // return <div>latitude:{this.state.lat}</div>
+    return <SeasonDisplay lat={this.state.lat} />
+  }
+
+  return <Spinner message='Please accept location request'/>
+};
+
+  render() 
+  {
+    return (
+      <div className="border red">
+        {this.renderContent()}
+      </div>
+    );
   }
 };
 

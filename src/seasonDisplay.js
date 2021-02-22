@@ -28,6 +28,7 @@ const SeasonDisplay = (props) =>{
   // const icon = season === 'winter' ? 'snowflake' : 'sun';
 
     const { text,iconName } = configSeason[season];
+    console.log(season);
     return <div className={`season-display ${season}`}>
       <i className={`icon-left massive ${iconName} icon`} />
       <h1>season:{text}</h1>
